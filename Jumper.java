@@ -17,7 +17,7 @@ public class Jumper {
 	static int X = ( Game.WIDTH / 2 ) - ( DIAMETER / 2 );		//The x position of the jumper. Does not change at any time. Should be exactly centered  
 	static int y =  Game.HEIGHT / 2;							//The STARTING y position of the jumper. Will change constantly
 	static int acceleration = 1;								//Used in the gravity simulation below
-	static int speed = 2;										//The speed at which the jumper will fall (constantly increased by acceleration (1) )
+	static int velocity = 2;										//The speed at which the jumper will fall (constantly increased by acceleration (1) )
 	
 	
 	static BufferedImage img = null;{
@@ -34,7 +34,7 @@ public class Jumper {
 	//This is called when the jumper jumps (on mouse click). It just temporarily sets the speed to -17 (arbitrary number), then is slowly taken back down because 
 	//of "gravity"
 	public void jump(){
-		speed = - 17;			
+		velocity = - 17;			
 	}
 	
 	//all movement stuff is here 
@@ -42,8 +42,8 @@ public class Jumper {
 	
 		//only moves if the jumper is between the top and bottom of the window
 		if ( ( y > 0 ) && ( y < Game.HEIGHT )) {
-			speed += acceleration;								//Here's the gravity I was talking about the speed is just increased by 1 all the time, even after a jump
-			y += speed;											//The actual movement, y location equals (where it was) + (how far it should go)
+			velocity += acceleration;								//Here's the gravity I was talking about the speed is just increased by 1 all the time, even after a jump
+			y += velocity;											//The actual movement, y location equals (where it was) + (how far it should go)
 		}
 		//or else the game resets (jumper is dead!)
 		else {
